@@ -1,5 +1,8 @@
 package br.com.alura.screenmatch.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
@@ -9,6 +12,10 @@ public class Episodio {
     private Integer numero;
     private Double avaliacao;
     private LocalDate dataLancamento;
+    private String genero;
+    private String atores;
+    private String poster;
+    private String sinopse;
 
     public Episodio(Integer temporada, DadosEpisodio dadosEpisodio) {
         this.temporada = temporada;
@@ -67,6 +74,38 @@ public class Episodio {
 
     public void setDataLancamento(LocalDate dataLancamento) {
         this.dataLancamento = dataLancamento;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getAtores() {
+        return atores;
+    }
+
+    public void setAtores(String atores) {
+        this.atores = atores;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
     }
 
     @Override
