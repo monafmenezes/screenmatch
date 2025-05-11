@@ -1,21 +1,27 @@
 package br.com.alura.screenmatch.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Episodios")
 public class Episodio {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Integer temporada;
     private String titulo;
     private Integer numero;
     private Double avaliacao;
     private LocalDate dataLancamento;
-    private String genero;
-    private String atores;
-    private String poster;
-    private String sinopse;
+
+    @ManyToOne()
+    private Serie serie;
+
+    public Episodio(){}
 
     public Episodio(Integer temporada, DadosEpisodio dadosEpisodio) {
         this.temporada = temporada;
@@ -34,6 +40,22 @@ public class Episodio {
         } catch(DateTimeException e) {
             this.dataLancamento = null;
         }
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getTemporada() {
@@ -76,37 +98,6 @@ public class Episodio {
         this.dataLancamento = dataLancamento;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getAtores() {
-        return atores;
-    }
-
-    public void setAtores(String atores) {
-        this.atores = atores;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
-    public String getSinopse() {
-        return sinopse;
-    }
-
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
-    }
 
     @Override
     public String toString() {
